@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2692e5e4.chunk.css",
+    "main.js": "/static/js/main.05ca97b1.chunk.js",
+    "main.js.map": "/static/js/main.05ca97b1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.0e04e449.js",
+    "runtime-main.js.map": "/static/js/runtime-main.0e04e449.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.3102533f.chunk.js": "/static/js/2.3102533f.chunk.js",
+    "static/js/2.3102533f.chunk.js.map": "/static/js/2.3102533f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.a944dbe54b9ec962bccc7d17b361e53b.js": "/precache-manifest.a944dbe54b9ec962bccc7d17b361e53b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.2692e5e4.chunk.css.map": "/static/css/main.2692e5e4.chunk.css.map",
+    "static/js/2.3102533f.chunk.js.LICENSE.txt": "/static/js/2.3102533f.chunk.js.LICENSE.txt",
+    "static/media/austin_tx.png": "/static/media/austin_tx.2ec174f4.png",
+    "static/media/Home.css": "/static/media/background.d038df91.png",
+    "static/media/cities.png": "/static/media/cities.02d05052.png",
+    "static/media/Cities.css": "/static/media/citiesbackground.1431e206.png",
+    "static/media/mcdonalds.jpg": "/static/media/mcdonalds.296ddddc.jpg",
+    "static/media/restaurants.png": "/static/media/restaurants.4f5b669e.png",
+    "static/media/Restaurants.css": "/static/media/restaurantsbackground.0515dae4.jpg",
+    "static/media/sanfrancisco_ca.png": "/static/media/sanfrancisco_ca.705492d1.png",
+    "static/media/seattle_wa.png": "/static/media/seattle_wa.d481c9ac.png",
+    "static/media/tacobell.jpg": "/static/media/tacobell.d5971d27.jpg",
+    "static/media/uc_berkeley.png": "/static/media/uc_berkeley.6c9d2d74.png",
+    "static/media/universities.png": "/static/media/universities.5892c169.png",
+    "static/media/Universities.css": "/static/media/universitiesbackground.95195350.png",
+    "static/media/ut_austin.png": "/static/media/ut_austin.be0b34c1.png",
+    "static/media/uw_seattle.png": "/static/media/uw_seattle.731499bb.png",
+    "static/media/wendys.jpg": "/static/media/wendys.6c144d61.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0e04e449.js",
+    "static/css/2.47e06e2e.chunk.css",
+    "static/js/2.3102533f.chunk.js",
+    "static/css/main.2692e5e4.chunk.css",
+    "static/js/main.05ca97b1.chunk.js"
+  ]
+}

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+.hometext {
+  font-family: Futura;
+  text-align: center;
+  color: rgb(13, 145, 221);
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 15px;
+  padding: 10px;
+  width: 45%;
+}
+
+.jumbotron {
+  background-image: url('../static_resources/background.png');
+  background-size: cover;
+  min-height: 450px;
+  background-repeat: no-repeat;
+}
+
+.card:first-of-type {
+  margin-left: 40px;
+}
+
+.card:last-of-type {
+  margin-right: 40px;
+}

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation Component should render a Navigation Bar 1`] = `ShallowWrapper {}`;
+
+exports[`should render About 1`] = `ShallowWrapper {}`;
+
+exports[`should render AttractionFilters 1`] = `ShallowWrapper {}`;
+
+exports[`should render AttractionProfile 1`] = `ShallowWrapper {}`;
+
+exports[`should render Attractions 1`] = `ShallowWrapper {}`;
+
+exports[`should render Cities 1`] = `ShallowWrapper {}`;
+
+exports[`should render CityFilters 1`] = `ShallowWrapper {}`;
+
+exports[`should render CityProfile 1`] = `ShallowWrapper {}`;
+
+exports[`should render GitLabTable 1`] = `ShallowWrapper {}`;
+
+exports[`should render Universities 1`] = `ShallowWrapper {}`;
+
+exports[`should render UniversityFilters 1`] = `ShallowWrapper {}`;
+
+exports[`should render UniversityProfile 1`] = `ShallowWrapper {}`;

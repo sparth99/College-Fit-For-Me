@@ -1,0 +1,2067 @@
+{
+	"info": {
+		"_postman_id": "f5da74ab-ef59-4950-a932-b84556b4a178",
+		"name": "College Fit API Tests",
+		"description": "# Introduction\nWhat does your API do?\nThe API returns information about models : Cities, Universities, and Restaraunts\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?\nN/A",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "City Tests",
+			"item": [
+				{
+					"name": "By Name Tests",
+					"item": [
+						{
+							"name": "Cities by Name #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a55b0259-e9f0-4bfc-8933-da5fb438c137",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"let jsonResponse = pm.response.json();\r",
+											"pm.test(\"Response should be a parsable JSON\", function() {\r",
+											"    pm.expect(jsonResponse).to.be.ok;\r",
+											"});\r",
+											"var cityJson = pm.response.json()[0];\r",
+											"var schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"city_name\": {\"type\": \"string\" },\r",
+											"        \"state_name\": {\"type\": \"string\"},\r",
+											"        \"city_state_name\": {\"type\": \"string\"},\r",
+											"        \"population\": {\"type\":\"number\"},\r",
+											"        \"crime_index\": {\"type\": \"number\"},\r",
+											"        \"pollution_index\": {\"type\": \"number\"},\r",
+											"        \"rent_index\": {\"type\": \"number\"},\r",
+											"        \"restaurant_price_index\": {\"type\": \"number\"},\r",
+											"        \"traffic_index\": {\"type\": \"number\"},\r",
+											"        \"safety_index\": {\"type\": \"number\"},\r",
+											"        \"health_care_index\": {\"type\": \"number\"},\r",
+											"        \"time_zone\": {\"type\": \"string\"},\r",
+											"        \"image_url\": {\"type\": \"string\"}\r",
+											"        // add type for resturant and uni's but for some reason it doesn't work??\r",
+											"    }\r",
+											"};\r",
+											"pm.test('Schema is valid', function() {\r",
+											"  pm.expect(tv4.validate(cityJson, schema)).to.be.true;\r",
+											"//   pm.expect(tv4.validate(data2, schema)).to.be.true; // this statement would not be true\r",
+											"});\r",
+											"pm.test('Values in restaurants list is greater than zero', function() { // jank test\r",
+											"    pm.expect(cityJson.restaurants.length > 0).to.be.true;\r",
+											"});\r",
+											"pm.test('Values in uni\\'s list is greater than zero', function() { // jank test\r",
+											"    pm.expect(cityJson.universities.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "api.collegefitfor.me/cities?name=austin_texas",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "austin_texas"
+										}
+									]
+								},
+								"description": "Return single instance of the city model specfied by name"
+							},
+							"response": [
+								{
+									"name": "Default",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": ""
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Cities By Name #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3ed6c9bf-9c55-43fc-b36c-583108886c9b",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"let jsonResponse = pm.response.json();\r",
+											"pm.test(\"Response should be a parsable JSON\", function() {\r",
+											"    pm.expect(jsonResponse).to.be.ok;\r",
+											"});\r",
+											"var cityJson = pm.response.json()[0];\r",
+											"var schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"city_name\": {\"type\": \"string\" },\r",
+											"        \"state_name\": {\"type\": \"string\"},\r",
+											"        \"city_state_name\": {\"type\": \"string\"},\r",
+											"        \"population\": {\"type\":\"number\"},\r",
+											"        \"crime_index\": {\"type\": \"number\"},\r",
+											"        \"pollution_index\": {\"type\": \"number\"},\r",
+											"        \"rent_index\": {\"type\": \"number\"},\r",
+											"        \"restaurant_price_index\": {\"type\": \"number\"},\r",
+											"        \"traffic_index\": {\"type\": \"number\"},\r",
+											"        \"safety_index\": {\"type\": \"number\"},\r",
+											"        \"health_care_index\": {\"type\": \"number\"},\r",
+											"        \"time_zone\": {\"type\": \"string\"},\r",
+											"        \"image_url\": {\"type\": \"string\"}\r",
+											"        // add type for resturant and uni's but for some reason it doesn't work??\r",
+											"    }\r",
+											"};\r",
+											"pm.test('Schema is valid', function() {\r",
+											"  pm.expect(tv4.validate(cityJson, schema)).to.be.true;\r",
+											"//   pm.expect(tv4.validate(data2, schema)).to.be.true; // this statement would not be true\r",
+											"});\r",
+											"pm.test('Values in restaurants list is greater than zero', function() { // jank test\r",
+											"    pm.expect(cityJson.restaurants.length > 0).to.be.true;\r",
+											"});\r",
+											"pm.test('Values in uni\\'s list is greater than zero', function() { // jank test\r",
+											"    pm.expect(cityJson.universities.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/cities?name=charlotte_north-carolina",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "charlotte_north-carolina"
+										}
+									]
+								},
+								"description": "Testing Cities With Space In city or state name"
+							},
+							"response": []
+						},
+						{
+							"name": "Cities by Name #3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ecaea749-2159-492e-80f3-32ac40340b34",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"let jsonResponse = pm.response.json();\r",
+											"pm.test(\"Response should be a parsable JSON\", function() {\r",
+											"    pm.expect(jsonResponse).to.be.ok;\r",
+											"});\r",
+											"var cityJson = pm.response.json()[0];\r",
+											"var schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"city_name\": {\"type\": \"string\" },\r",
+											"        \"state_name\": {\"type\": \"string\"},\r",
+											"        \"city_state_name\": {\"type\": \"string\"},\r",
+											"        \"population\": {\"type\":\"number\"},\r",
+											"        \"crime_index\": {\"type\": \"number\"},\r",
+											"        \"pollution_index\": {\"type\": \"number\"},\r",
+											"        \"rent_index\": {\"type\": \"number\"},\r",
+											"        \"restaurant_price_index\": {\"type\": \"number\"},\r",
+											"        \"traffic_index\": {\"type\": \"number\"},\r",
+											"        \"safety_index\": {\"type\": \"number\"},\r",
+											"        \"health_care_index\": {\"type\": \"number\"},\r",
+											"        \"time_zone\": {\"type\": \"string\"},\r",
+											"        \"image_url\": {\"type\": \"string\"}\r",
+											"        // add type for resturant and uni's but for some reason it doesn't work??\r",
+											"    }\r",
+											"};\r",
+											"pm.test('Schema is valid', function() {\r",
+											"  pm.expect(tv4.validate(cityJson, schema)).to.be.true;\r",
+											"//   pm.expect(tv4.validate(data2, schema)).to.be.true; // this statement would not be true\r",
+											"});\r",
+											"pm.test('Values in restaurants list is greater than zero', function() { // jank test\r",
+											"    pm.expect(cityJson.restaurants.length > 0).to.be.true;\r",
+											"});\r",
+											"pm.test('Values in uni\\'s list is greater than zero', function() { // jank test\r",
+											"    pm.expect(cityJson.universities.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/cities?name=st.-louis_missouri",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "st.-louis_missouri"
+										}
+									]
+								},
+								"description": "Testing \"St. Louis\" To check if period works in query"
+							},
+							"response": []
+						},
+						{
+							"name": "Cities By Name #4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4cfa6a3c-102a-417a-961d-c3c92724a9a6",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/cities?name=fake-town_fate-state",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "fake-town_fate-state"
+										}
+									]
+								},
+								"description": "Requesting a city not present in database. Expected to fail"
+							},
+							"response": []
+						},
+						{
+							"name": "Cities By Name #5",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "9b759501-b141-4e9e-891b-6fe2ac0b6c3e",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/cities?name=Charlotte, North Carolina",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Charlotte, North Carolina"
+										}
+									]
+								},
+								"description": "Using Incorrect Space Mechanics. Expected To Fail"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "By Filter Tests",
+					"item": [
+						{
+							"name": "Cities by Filter #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8c00813a-d95c-47fa-bfd5-bc975b7e3883",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.collegefitfor.me/cities/filter/?city_name=Austin&page=1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities",
+										"filter",
+										""
+									],
+									"query": [
+										{
+											"key": "city_name",
+											"value": "Austin"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Return cities that match the filter attritbute"
+							},
+							"response": []
+						},
+						{
+							"name": "Cities by Filter #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8c00813a-d95c-47fa-bfd5-bc975b7e3883",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.collegefitfor.me/cities/filter/?state_name=Texas&page=1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities",
+										"filter",
+										""
+									],
+									"query": [
+										{
+											"key": "state_name",
+											"value": "Texas"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Return cities that match the filter attritbute"
+							},
+							"response": []
+						},
+						{
+							"name": "Cities by Filter #3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8c00813a-d95c-47fa-bfd5-bc975b7e3883",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.collegefitfor.me/cities/filter/?city_state_name=austin_texas&page=1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities",
+										"filter",
+										""
+									],
+									"query": [
+										{
+											"key": "city_state_name",
+											"value": "austin_texas"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Return cities that match the filter attritbute"
+							},
+							"response": []
+						},
+						{
+							"name": "Cities by Filter #4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8c00813a-d95c-47fa-bfd5-bc975b7e3883",
+										"exec": [
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.collegefitfor.me/cities/filter/?population=100&page=1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities",
+										"filter",
+										""
+									],
+									"query": [
+										{
+											"key": "population",
+											"value": "100"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Return cities that match the filter attritbute"
+							},
+							"response": []
+						},
+						{
+							"name": "Cities by Filter #5",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8c00813a-d95c-47fa-bfd5-bc975b7e3883",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.collegefitfor.me/cities/filter/?time_zone=America/Chicago&page=1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities",
+										"filter",
+										""
+									],
+									"query": [
+										{
+											"key": "time_zone",
+											"value": "America/Chicago"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Return cities that match the filter attritbute"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "By Search Tests",
+					"item": [
+						{
+							"name": "Cities by Search #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6642a098-a12b-41a4-83e7-e92868eb0e6b",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/cities/search/?search_query=texas",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities",
+										"search",
+										""
+									],
+									"query": [
+										{
+											"key": "search_query",
+											"value": "texas"
+										}
+									]
+								},
+								"description": "Get a list of city instances by the search query"
+							},
+							"response": []
+						},
+						{
+							"name": "Cities by Search #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fcc20f5b-1c87-4de9-bcb4-398740752a66",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/cities/search/?search_query=TEXAS",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities",
+										"search",
+										""
+									],
+									"query": [
+										{
+											"key": "search_query",
+											"value": "TEXAS"
+										}
+									]
+								},
+								"description": "Testing CAPS-sensitivity"
+							},
+							"response": []
+						},
+						{
+							"name": "Cities by Search #3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fcc20f5b-1c87-4de9-bcb4-398740752a66",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/cities/search/?search_query=TEXAS",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"cities",
+										"search",
+										""
+									],
+									"query": [
+										{
+											"key": "search_query",
+											"value": "TEXAS"
+										}
+									]
+								},
+								"description": "Testing partial strings"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Cities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cbd00814-f243-4146-9c45-0e12728bef71",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"})\r",
+									"let jsonResponse = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response should be a parsable JSON\", function() {\r",
+									"    pm.expect(jsonResponse).to.be.ok;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "api.collegefitfor.me/cities",
+							"host": [
+								"api",
+								"collegefitfor",
+								"me"
+							],
+							"path": [
+								"cities"
+							]
+						},
+						"description": "Get all the cities in the database"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "University Tests",
+			"item": [
+				{
+					"name": "By Name Tests",
+					"item": [
+						{
+							"name": "Universities by Name #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c22904d8-d794-425e-93ad-bd37dabd5049",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"let jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response should be a parsable JSON\", function() {\r",
+											"    pm.expect(jsonResponse).to.be.ok;\r",
+											"});\r",
+											"\r",
+											"var uniJson = pm.response.json()[0];\r",
+											"var schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"id\": {\"type\": \"number\" },\r",
+											"        \"name\": {\"type\": \"string\"},\r",
+											"        \"city_name\": {\"type\": \"string\"},\r",
+											"        \"city_state_name\": {\"type\":\"string\"},\r",
+											"        \"num_undergrads\": {\"type\": \"number\"},\r",
+											"        \"admission_rate\": {\"type\": \"number\"},\r",
+											"        \"cost_per_year\": {\"type\": \"number\"},\r",
+											"        \"retention_rate\": {\"type\": \"number\"},\r",
+											"        \"percent_men\": {\"type\": \"number\"},\r",
+											"        \"percent_women\": {\"type\": \"number\"},\r",
+											"        \"grad_rate\": {\"type\": \"number\"},\r",
+											"        \"avg_sat_score\": {\"type\": \"number\"},\r",
+											"        \"avg_act_score\": {\"type\": \"number\"},\r",
+											"        \"image_url\": {\"type\": \"string\"}\r",
+											"        // add type object for resturant but for some reason it doesn't work??\r",
+											"    }\r",
+											"};\r",
+											"\r",
+											"pm.test('Schema is valid', function() {\r",
+											"  pm.expect(tv4.validate(uniJson, schema)).to.be.true;\r",
+											"//   pm.expect(tv4.validate(data2, schema)).to.be.true; // this statement would not be true\r",
+											"});\r",
+											"pm.test('Values in restaurants list is greater than zero', function() { // jank test\r",
+											"    pm.expect(uniJson.restaurants.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/universities?name=The University of Texas at Austin",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"universities"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "The University of Texas at Austin"
+										}
+									]
+								},
+								"description": "Return single instance of the University based on name"
+							},
+							"response": []
+						},
+						{
+							"name": "Universities by Name #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c22904d8-d794-425e-93ad-bd37dabd5049",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"let jsonResponse = pm.response.json();\r",
+											"\r",
+											"pm.test(\"Response should be a parsable JSON\", function() {\r",
+											"    pm.expect(jsonResponse).to.be.ok;\r",
+											"});\r",
+											"\r",
+											"var uniJson = pm.response.json()[0];\r",
+											"var schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"id\": {\"type\": \"number\" },\r",
+											"        \"name\": {\"type\": \"string\"},\r",
+											"        \"city_name\": {\"type\": \"string\"},\r",
+											"        \"city_state_name\": {\"type\":\"string\"},\r",
+											"        \"num_undergrads\": {\"type\": \"number\"},\r",
+											"        \"admission_rate\": {\"type\": \"number\"},\r",
+											"        \"cost_per_year\": {\"type\": \"number\"},\r",
+											"        \"retention_rate\": {\"type\": \"number\"},\r",
+											"        \"percent_men\": {\"type\": \"number\"},\r",
+											"        \"percent_women\": {\"type\": \"number\"},\r",
+											"        \"grad_rate\": {\"type\": \"number\"},\r",
+											"        \"avg_sat_score\": {\"type\": \"number\"},\r",
+											"        \"avg_act_score\": {\"type\": \"number\"},\r",
+											"        \"image_url\": {\"type\": \"string\"}\r",
+											"        // add type object for resturant but for some reason it doesn't work??\r",
+											"    }\r",
+											"};\r",
+											"\r",
+											"pm.test('Schema is valid', function() {\r",
+											"  pm.expect(tv4.validate(uniJson, schema)).to.be.true;\r",
+											"//   pm.expect(tv4.validate(data2, schema)).to.be.true; // this statement would not be true\r",
+											"});\r",
+											"pm.test('Values in restaurants list is greater than zero', function() { // jank test\r",
+											"    pm.expect(uniJson.restaurants.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/universities?name=The%20University%20of%20Texas%20at%20Austin",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"universities"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "The%20University%20of%20Texas%20at%20Austin"
+										}
+									]
+								},
+								"description": "Testing %20 instead of \" \" in search paramaters"
+							},
+							"response": []
+						},
+						{
+							"name": "Universities by Name #3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c22904d8-d794-425e-93ad-bd37dabd5049",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/universities?name=Fake University",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"universities"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Fake University"
+										}
+									]
+								},
+								"description": "Testing call on university not in database. Expected to fail"
+							},
+							"response": []
+						},
+						{
+							"name": "Universities by Name #4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c22904d8-d794-425e-93ad-bd37dabd5049",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/universities?name=The University of Texas at Aust",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"universities"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "The University of Texas at Aust"
+										}
+									]
+								},
+								"description": "Testing call on partial string of university name. Expected to Fail"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "By Filter Tests",
+					"item": [
+						{
+							"name": "Universites by Filter #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "743022c4-f6f2-4b47-b624-5ffc821d9abc",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"let jsonResponse = pm.response.json();\r",
+											"pm.test(\"Response should be a parsable JSON\", function() {\r",
+											"    pm.expect(jsonResponse).to.be.ok;\r",
+											"});\r",
+											"var uniJson = pm.response.json()[0];\r",
+											"var schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"id\": {\"type\": \"number\" },\r",
+											"        \"name\": {\"type\": \"string\"},\r",
+											"        \"city_name\": {\"type\": \"string\"},\r",
+											"        \"city_state_name\": {\"type\":\"string\"},\r",
+											"        \"num_undergrads\": {\"type\": \"number\"},\r",
+											"        \"admission_rate\": {\"type\": \"number\"},\r",
+											"        \"cost_per_year\": {\"type\": \"number\"},\r",
+											"        \"retention_rate\": {\"type\": \"number\"},\r",
+											"        \"percent_men\": {\"type\": \"number\"},\r",
+											"        \"percent_women\": {\"type\": \"number\"},\r",
+											"        \"grad_rate\": {\"type\": \"number\"},\r",
+											"        \"avg_sat_score\": {\"type\": \"number\"},\r",
+											"        \"avg_act_score\": {\"type\": \"number\"},\r",
+											"        \"image_url\": {\"type\": \"string\"},\r",
+											"        \"wiki_text\": {\"type\": \"string\"}\r",
+											"        // add type object for resturant but for some reason it doesn't work??\r",
+											"    }\r",
+											"};\r",
+											"\r",
+											"pm.test('Schema is valid', function() {\r",
+											"  pm.expect(tv4.validate(uniJson, schema)).to.be.true;\r",
+											"//   pm.expect(tv4.validate(data2, schema)).to.be.true; // this statement would not be true\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.collegefitfor.me/universities/filter/?city_name=Austin&page=1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"universities",
+										"filter",
+										""
+									],
+									"query": [
+										{
+											"key": "city_name",
+											"value": "Austin"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Return Universities based on filter attribute"
+							},
+							"response": []
+						},
+						{
+							"name": "Universites by Filter #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "743022c4-f6f2-4b47-b624-5ffc821d9abc",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"let jsonResponse = pm.response.json();\r",
+											"pm.test(\"Response should be a parsable JSON\", function() {\r",
+											"    pm.expect(jsonResponse).to.be.ok;\r",
+											"});\r",
+											"var uniJson = pm.response.json();\r",
+											"var schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"id\": {\"type\": \"number\" },\r",
+											"        \"name\": {\"type\": \"string\"},\r",
+											"        \"city_name\": {\"type\": \"string\"},\r",
+											"        \"city_state_name\": {\"type\":\"string\"},\r",
+											"        \"num_undergrads\": {\"type\": \"number\"},\r",
+											"        \"admission_rate\": {\"type\": \"number\"},\r",
+											"        \"cost_per_year\": {\"type\": \"number\"},\r",
+											"        \"retention_rate\": {\"type\": \"number\"},\r",
+											"        \"percent_men\": {\"type\": \"number\"},\r",
+											"        \"percent_women\": {\"type\": \"number\"},\r",
+											"        \"grad_rate\": {\"type\": \"number\"},\r",
+											"        \"avg_sat_score\": {\"type\": \"number\"},\r",
+											"        \"avg_act_score\": {\"type\": \"number\"},\r",
+											"        \"image_url\": {\"type\": \"string\"},\r",
+											"        \"wiki_text\": {\"type\": \"string\"}\r",
+											"        // add type object for resturant but for some reason it doesn't work??\r",
+											"    }\r",
+											"};\r",
+											"\r",
+											"pm.test('Schema is valid', function() {\r",
+											"  pm.expect(tv4.validate(uniJson, schema)).to.be.false;\r",
+											"//   pm.expect(tv4.validate(data2, schema)).to.be.true; // this statement would not be true\r",
+											"});\r",
+											"pm.test('There are no values in the response', function() { // nothing in the response\r",
+											"    pm.expect(uniJson.length === 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.collegefitfor.me/universities/filter/?city_name=yeyeye&page=1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"universities",
+										"filter",
+										""
+									],
+									"query": [
+										{
+											"key": "city_name",
+											"value": "yeyeye"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Return Universities based on filter attribute"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "By Search Tests",
+					"item": [
+						{
+							"name": "Universities by Search #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a2483eec-8e47-4ac4-bb11-d310b1d0a215",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/universities/search/?search_query=texas",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"universities",
+										"search",
+										""
+									],
+									"query": [
+										{
+											"key": "search_query",
+											"value": "texas"
+										}
+									]
+								},
+								"description": "Get a list of university instances by the search query"
+							},
+							"response": []
+						},
+						{
+							"name": "Universities by Search #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fcc20f5b-1c87-4de9-bcb4-398740752a66",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/universities/search/?search_query=TEXAS",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"universities",
+										"search",
+										""
+									],
+									"query": [
+										{
+											"key": "search_query",
+											"value": "TEXAS"
+										}
+									]
+								},
+								"description": "Testing CAPS-sensitivity"
+							},
+							"response": []
+						},
+						{
+							"name": "Universities by Search #3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fcc20f5b-1c87-4de9-bcb4-398740752a66",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/universities/search/?search_query=TEXAS",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"universities",
+										"search",
+										""
+									],
+									"query": [
+										{
+											"key": "search_query",
+											"value": "TEXAS"
+										}
+									]
+								},
+								"description": "Testing partial strings"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Universities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "957b629e-3790-490b-860a-4443bd6ca919",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"})\r",
+									"let jsonResponse = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response should be a parsable JSON\", function() {\r",
+									"    pm.expect(jsonResponse).to.be.ok;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "api.collegefitfor.me/universities",
+							"host": [
+								"api",
+								"collegefitfor",
+								"me"
+							],
+							"path": [
+								"universities"
+							]
+						},
+						"description": "Get all the Universities"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Restaurant Tests",
+			"item": [
+				{
+					"name": "By Name Tests",
+					"item": [
+						{
+							"name": "Restaurants by Name #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "feb5a71e-f7c1-49f3-a38b-7eaf21afa0d0",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"let jsonResponse = pm.response.json();\r",
+											"pm.test(\"Response should be a parsable JSON\", function() {\r",
+											"    pm.expect(jsonResponse).to.be.ok;\r",
+											"});\r",
+											"var restaurantJson = pm.response.json()[0];\r",
+											"var schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"id\": {\"type\": \"number\" },\r",
+											"        \"restaurant_name\": {\"type\": \"string\"},\r",
+											"        \"rating\": {\"type\": \"number\"},\r",
+											"        \"price\": {\"type\":\"string\"},\r",
+											"        \"review_count\": {\"type\": \"number\"},\r",
+											"        \"city_name\": {\"type\": \"string\"},\r",
+											"        \"state_name\": {\"type\": \"string\"},\r",
+											"        \"transactions\": {\"type\": \"string\"},\r",
+											"        \"categories\": {\"type\": \"string\"},\r",
+											"        \"address\": {\"type\": \"string\"},\r",
+											"        \"city_state_name\": {\"type\": \"string\"},\r",
+											"        \"youtube_link\": {\"type\": \"string\"}\r",
+											"        // add type object for uni's but for some reason it doesn't work??\r",
+											"    }\r",
+											"};\r",
+											"\r",
+											"pm.test('Schema is valid', function() {\r",
+											"  pm.expect(tv4.validate(restaurantJson, schema)).to.be.true;\r",
+											"//   pm.expect(tv4.validate(data2, schema)).to.be.true; // this statement would not be true\r",
+											"});\r",
+											"pm.test('Values in restaurants list is greater than zero', function() { // jank test\r",
+											"    pm.expect(restaurantJson.universities.length > 0).to.be.true;\r",
+											"});\r",
+											"console.log(restaurantJson)\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.collegefitfor.me/restaurants?name=Levain Bakery*1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"restaurants"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Levain Bakery*1"
+										}
+									]
+								},
+								"description": "Get a Specific Restaurants by name"
+							},
+							"response": []
+						},
+						{
+							"name": "Restaurants by Name #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "feb5a71e-f7c1-49f3-a38b-7eaf21afa0d0",
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {\r",
+											"    pm.response.to.have.status(404);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.collegefitfor.me/restaurants?name=Levain Bakery*0",
+									"protocol": "https",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"restaurants"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Levain Bakery*0"
+										}
+									]
+								},
+								"description": "Testing an invalid id. Expected to Fail"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "By Filter Tests",
+					"item": [
+						{
+							"name": "Restaurants by Filter #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c03c6e8a-8a3d-4cdc-9b04-601ebcd64300",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"let jsonResponse = pm.response.json();\r",
+											"pm.test(\"Response should be a parsable JSON\", function() {\r",
+											"    pm.expect(jsonResponse).to.be.ok;\r",
+											"});\r",
+											"var restaurantJson = pm.response.json()[0];\r",
+											"var restJSONDump = pm.response.json();\r",
+											"var schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"id\": {\"type\": \"number\" },\r",
+											"        \"restaurant_name\": {\"type\": \"string\"},\r",
+											"        \"rating\": {\"type\": \"number\"},\r",
+											"        \"price\": {\"type\":\"string\"},\r",
+											"        \"review_count\": {\"type\": \"number\"},\r",
+											"        \"city_name\": {\"type\": \"string\"},\r",
+											"        \"state_name\": {\"type\": \"string\"},\r",
+											"        \"transactions\": {\"type\": \"string\"},\r",
+											"        \"categories\": {\"type\": \"string\"},\r",
+											"        \"address\": {\"type\": \"string\"},\r",
+											"        \"city_state_name\": {\"type\": \"string\"},\r",
+											"        \"youtube_link\": {\"type\": \"string\"}\r",
+											"        // add type object for uni's but for some reason it doesn't work??\r",
+											"    }\r",
+											"};\r",
+											"\r",
+											"pm.test('Schema is valid', function() {\r",
+											"  pm.expect(tv4.validate(restaurantJson, schema)).to.be.true;\r",
+											"//   pm.expect(tv4.validate(data2, schema)).to.be.true; // this statement would not be true\r",
+											"});\r",
+											"pm.test('Values in restaurants list is greater than zero', function() { // jank test\r",
+											"    pm.expect(restJSONDump.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.collegefitfor.me/restaurants/filter/?price=$$&page=1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"restaurants",
+										"filter",
+										""
+									],
+									"query": [
+										{
+											"key": "price",
+											"value": "$$"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Return Restaurants based on the filter attribute"
+							},
+							"response": []
+						},
+						{
+							"name": "Restaurants by Filter #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c03c6e8a-8a3d-4cdc-9b04-601ebcd64300",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"let jsonResponse = pm.response.json();\r",
+											"pm.test(\"Response should be a parsable JSON\", function() {\r",
+											"    pm.expect(jsonResponse).to.be.ok;\r",
+											"});\r",
+											"var restaurantJson = pm.response.json()[0];\r",
+											"var restJSONDump = pm.response.json();\r",
+											"var schema = {\r",
+											"    \"type\": \"object\",\r",
+											"    \"properties\": {\r",
+											"        \"id\": {\"type\": \"number\" },\r",
+											"        \"restaurant_name\": {\"type\": \"string\"},\r",
+											"        \"rating\": {\"type\": \"number\"},\r",
+											"        \"price\": {\"type\":\"string\"},\r",
+											"        \"review_count\": {\"type\": \"number\"},\r",
+											"        \"city_name\": {\"type\": \"string\"},\r",
+											"        \"state_name\": {\"type\": \"string\"},\r",
+											"        \"transactions\": {\"type\": \"string\"},\r",
+											"        \"categories\": {\"type\": \"string\"},\r",
+											"        \"address\": {\"type\": \"string\"},\r",
+											"        \"city_state_name\": {\"type\": \"string\"},\r",
+											"        \"youtube_link\": {\"type\": \"string\"}\r",
+											"        // add type object for uni's but for some reason it doesn't work??\r",
+											"    }\r",
+											"};\r",
+											"\r",
+											"pm.test('Schema is valid', function() {\r",
+											"  pm.expect(tv4.validate(restaurantJson, schema)).to.be.false;\r",
+											"//   pm.expect(tv4.validate(data2, schema)).to.be.true; // this statement would not be true\r",
+											"});\r",
+											"pm.test('Values in restaurants list is greater than zero', function() { // jank test\r",
+											"    pm.expect(restJSONDump.length === 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.collegefitfor.me/restaurants/filter/?price=$$$$$$&page=1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"restaurants",
+										"filter",
+										""
+									],
+									"query": [
+										{
+											"key": "price",
+											"value": "$$$$$$"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Return Restaurants based on the filter attribute"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "By Search Tests",
+					"item": [
+						{
+							"name": "Restaurants by Search #1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6642a098-a12b-41a4-83e7-e92868eb0e6b",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/restaurants/search/?search_query=texas",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"restaurants",
+										"search",
+										""
+									],
+									"query": [
+										{
+											"key": "search_query",
+											"value": "texas"
+										}
+									]
+								},
+								"description": "Get a list of restauarant instances by the search query"
+							},
+							"response": []
+						},
+						{
+							"name": "Restaurants by Search #2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fcc20f5b-1c87-4de9-bcb4-398740752a66",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/restaurants/search/?search_query=TEXAS",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"restaurants",
+										"search",
+										""
+									],
+									"query": [
+										{
+											"key": "search_query",
+											"value": "TEXAS"
+										}
+									]
+								},
+								"description": "Testing CAPS-sensitivity"
+							},
+							"response": []
+						},
+						{
+							"name": "Restaurants by Search #3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fcc20f5b-1c87-4de9-bcb4-398740752a66",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Content-Type is present\", function () {\r",
+											"    pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"pm.test(\"Content-Type is JSON\", function () {\r",
+											"    pm.response.to.be.json;\r",
+											"})\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.test('Values list is greater than zero', function() {\r",
+											"    pm.expect(responseJson.length > 0).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "api.collegefitfor.me/restaurants/search/?search_query=TEXAS",
+									"host": [
+										"api",
+										"collegefitfor",
+										"me"
+									],
+									"path": [
+										"restaurants",
+										"search",
+										""
+									],
+									"query": [
+										{
+											"key": "search_query",
+											"value": "TEXAS"
+										}
+									]
+								},
+								"description": "Testing partial strings"
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ea17049c-85c0-4202-81d3-63d13c2aaf05",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "d2686014-9919-4549-b9e0-6cb416ed461b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Restaurants",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fda6ffb8-5c88-470c-b872-b1dc5a4915c3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"})\r",
+									"let jsonResponse = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response should be a parsable JSON\", function() {\r",
+									"    pm.expect(jsonResponse).to.be.ok;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "api.collegefitfor.me/restaurants",
+							"host": [
+								"api",
+								"collegefitfor",
+								"me"
+							],
+							"path": [
+								"restaurants"
+							]
+						},
+						"description": "Get all the restaurants in the database"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

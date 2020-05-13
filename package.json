@@ -1,0 +1,72 @@
+{
+  "name": "react-prac",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@nuxtjs/axios": "^5.9.5",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@weknow/react-bubble-chart-d3": "^1.0.12",
+    "bootstrap": "^4.4.1",
+    "d3": "^5.15.1",
+    "es6-promise": "^4.2.8",
+    "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-d3-library": "^1.1.8",
+    "react-dom": "^16.12.0",
+    "react-faux-dom": "^4.5.0",
+    "react-highlight-words": "^0.16.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "react-usa-map": "^1.4.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test:unit": "mocha --require @babel/register --require ./test/helpers.js --require ./test/dom.js --require ignore-styles test/*.unit.js",
+    "test:unit:watch": "yarn test:unit -- --watch",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/register": "^7.9.0",
+    "chai": "^4.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^16.2.1",
+    "mocha": "^7.1.1",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "selenium-webdriver": "^4.0.0-alpha.7",
+    "sinon": "^9.0.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  }
+}

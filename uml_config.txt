@@ -1,0 +1,59 @@
+@startuml
+class Restaurant{
+    id : Integer
+    restaurant_name : String
+    rating : Float
+    image_url : String
+    price : String
+    review_count : Integer
+    city_name : String
+    state_name : String
+    transactions : String
+    categories : String
+    address : String
+    city_state_name : String
+}
+
+class City{
+    id : Integer
+    city_name : String
+    state_name : String
+    city_state_name : String
+    population : String
+    crime_index : Float
+    pollution_index : Float
+    rent_index : Float
+    restaurant_price_index : Float
+    traffic_index : Float
+    safety_index : Float
+    health_care_index : Float
+    time_zone : String
+    image_url : String
+    wiki_text: String
+}
+
+class University{
+    id : Integer
+    name : String
+    city_name : String
+    state_name : String
+    city_state_name : String
+    num_undergrads : Integer
+    admission_rate : Float
+    cost_per_year : Float
+    retention_rate : Float
+    percent_men : Float
+    percent_women : Float
+    grad_rate : Float
+    avg_sat_score : Integer
+    avg_act_score : Integer
+    image_url : String
+    wiki_text: String
+}
+
+City ||--|{ University
+City ||--|{ Restaurant
+University }|--|{ Restaurant
+
+@enduml
+

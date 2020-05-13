@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Josefin+Sans&display=swap');
+.footer {
+  background-color: #373940;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.font {
+  text-align: center;
+  font-family: 'Futura', Georgia, Times, serif;
+  color: rgb(34, 123, 238);
+}
+

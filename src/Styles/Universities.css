@@ -1,0 +1,21 @@
+.universities-jumbotron {
+  background-image: url('../static_resources/universitiesbackground.png');
+  background-size: cover;
+  min-height: 325px;
+  background-repeat: no-repeat;
+}
+
+.universities-header{
+  padding-bottom: 0px;
+}
+
+.container {
+  width: 100%;
+}
+
+.universities-card {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
