@@ -18,7 +18,7 @@
     "react-faux-dom": "^4.5.0",
     "react-highlight-words": "^0.16.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
+    "react-scripts": "5.0.1",
     "react-usa-map": "^1.4.0"
   },
   "scripts": {
@@ -54,7 +54,7 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "ignore-styles": "^5.0.1",
     "jsdom": "^16.2.1",
-    "mocha": "^7.1.1",
+    "mocha": "^11.7.5",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
     "selenium-webdriver": "^4.0.0-alpha.7",
